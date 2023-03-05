@@ -12,7 +12,7 @@ from matplotlib.ticker import AutoMinorLocator
 import pandas as pd
 
 # Import raw Inat data
-kowhaiRaw = pd.read_csv("KowhaiFlowering_20230207.csv")
+kowhaiRaw = pd.read_csv("observations-300073.csv")
 kowhaiRaw.head()
 
 
@@ -46,6 +46,14 @@ print(kowhaiRes)
 kowhaiSub.hist('latitude', bins=12, edgecolor="black");
 
 plt.plot( 'latitude', 'time_observed_at', data=kowhaiSub, linestyle='none', marker='o')
+
+
+
+
+
+
+
+
 
 # Advance scatter plot
 latitude = kowhaiSub["latitude"].values
