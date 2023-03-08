@@ -12,20 +12,23 @@ from matplotlib.ticker import AutoMinorLocator
 import pandas as pd
 
 # Import raw Inat data
-kowhaiRaw = pd.read_csv("observations-300073.csv")
-kowhaiRaw.head()
+kowhaiRaw = pd.read_csv("observations-300073.csv", 
+                        usecols=["time_observed_at", "quality_grade", "url", 
+                                  "latitude", "longitude", "positional_accuracy", 
+                                  "public_positional_accuracy","taxon_geoprivacy", 
+                                  "coordinates_obscured", "scientific_name", 
+                                  "common_name"]
+)
 
 
-# Subset kowhai data
-kowhaiSub = kowhaiRaw.filter(["time_observed_at", "quality_grade", "url", "latitude", "longitude", "positional_accuracy", "public_positional_accuracy","taxon_geoprivacy", "coordinates_obscured", "scientific_name","common_name"], axis=1)
 # Format column data types
-kowhaiSub['time_observed_at']=kowhaiSub['time_observed_at'].astype('datetime64[ns]') #accounts for null values in date
-kowhaiSub["quality_grade"]=kowhaiSub["quality_grade"].astype('string')
-kowhaiSub["taxon_geoprivacy"]=kowhaiSub["taxon_geoprivacy"].astype('string')
-kowhaiSub["scientific_name"]=kowhaiSub["scientific_name"].astype('string')
-kowhaiSub["common_name"]=kowhaiSub["common_name"].astype('string')
+kowhaiRaw['time_observed_at']=kowhaiRaw['time_observed_at'].astype('datetime64[ns]') #accounts for null values in date
+kowhaiRaw["quality_grade"]=kowhaiRaw["quality_grade"].astype('string')
+kowhaiRaw["taxon_geoprivacy"]=kowhaiRaw["taxon_geoprivacy"].astype('string')
+kowhaiRaw["scientific_name"]=kowhaiRaw["scientific_name"].astype('string')
+kowhaiRaw["common_name"]=kowhaiRaw["common_name"].astype('string')
 #kowhaiSub[""]=kowhaiSub[""].astype('')
-kowhaiSub.head()
+kowhaiRaw.head()
 
 
 # for loop
